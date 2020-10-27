@@ -1,0 +1,6 @@
+<span id="favorites">
+  <%= link_to blog_favorite_path(@blog), method: :post, remote: true, class: "heart" do %>
+    <%= heart_icon(@blog) %>
+  <% end %>
+  <%= @blog.favorites.count %>
+</span>

@@ -1,0 +1,29 @@
+<h2>
+  <%= avator_tag(@user) %>
+</h2>
+
+<h5>
+  <strong><%= tl(:name) %></strong> : <%= @user.name %>
+</h5>
+
+<h5>
+  <strong><%= tl(:email) %></strong> : <%= @user.email %>
+</h5>
+
+<% if @user.id == current_user.id %>
+  <div class="my-4">
+    <h5><%= t(".favorites") %></h5>
+
+    <% current_user.favorite_blogs.each do |blog| %>
+      <%= link_to blog.title, blog_path(blog) %>
+    <% end %>
+  </div>
+<% end %>
+
+<div class="my-2">
+  <% if @user.id == current_user.id %>
+    <%= link_to tl(:edit), edit_user_registration_path(current_user), class: "btn btn-outline-success btn-sm" %>
+  <% else %>
+    <%= render partial: 'follow' %>
+  <% end %>
+</div>

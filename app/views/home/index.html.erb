@@ -1,0 +1,12 @@
+<h1><%= t(".main") %></h1>
+<h2><%= t(".sub") %></h2>
+
+<% if user_signed_in? %>
+  <h4><%= link_to(t("blogs.index.title"), blogs_path) %></h4>
+<% else %>
+  <h3><%= t(".sign_up") %></h3>
+  <h4><%= link_to(t("users.registrations.new.sign_up"), new_user_registration_path) %></h4>
+
+  <h3><%= t(".sign_in") %></h3>
+  <h4><%= link_to(tl(:login), new_user_session_path) %></h4>
+<% end %>

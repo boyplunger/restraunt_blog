@@ -1,0 +1,18 @@
+<h1><%= t(".title") %></h1>
+
+<%= search_form_for @q do |f| %>
+  <%= f.search_field :name_cont, placeholder: tl(:name) %>
+
+  <%= submit_tag tl(:search), class: "btn btn-outline-info btn-sm" %>
+<% end %>
+
+<%= paginate @users %>
+
+<% @users.each do |user| %>
+  <div class="my-3">
+    <%= avator_tag(user) %>
+    <%= link_to user.name, user, class: 'h2' %>
+  </div>
+<% end %>
+
+<%= paginate @users %>

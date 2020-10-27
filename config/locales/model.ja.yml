@@ -1,0 +1,31 @@
+ja:
+  activerecord:
+    models:
+      # モデル名を定義
+      user: ユーザー
+      blog: ブログ
+      comment: コメント
+      favorite: いいね
+      relationship: フォロー
+
+    # モデル毎に定義したいattributesを記述
+    attributes:
+        user:
+          name:  ニックネーム
+          email: メールアドレス
+          image: プロフィール画像
+          password: パスワード
+          crypted_password: パスワード
+        blog:
+          title: タイトル
+          body: ブログ内容
+          tag_list: タグ
+          image:    画像
+        comment:
+          body: コメント
+
+  # 全てのmモデルで共通して使用するattributesを定義
+  attributes:
+    id: ID
+    created_at: 作成日
+    updated_at: 更新日

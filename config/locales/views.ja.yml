@@ -1,0 +1,44 @@
+ja:
+  # viewファイル毎に定義する
+  blogs:
+    index:
+      title: ブログ一覧
+    show:
+      title: ブログ
+    edit:
+      title: ブログ編集
+    new:
+      title: ブログ作成
+  comments:
+    index:
+      title: コメント一覧
+    new:
+      title:  コメントを書く
+      submit: コメントする
+  home:
+    index:
+      main: "ようこそ！"
+      sub:  "これはオススメのご飯屋さんのメニューを紹介する簡易ブログです"
+      sign_up: "まずはアカウントを作成してください"
+      sign_in: "既にアカウントがある場合はこちらからログインしてください"
+
+  views:
+    actions:
+      new:      作成
+      edit:     編集
+      delete:   削除
+      submit:   送信
+      follow:   フォロー
+      unfollow: フォロー解除
+      search:   検索
+      login:    ログイン
+      logout:   ログアウト
+      back:     戻る
+    tags:
+      western:  洋食
+      japanese: 和食
+      italian:  イタリアン
+      french:   フレンチ
+      chinese:  中華
+      indian:   インド料理
+      ramen:    ラーメン

@@ -1,0 +1,57 @@
+<h2><%= t(".title") %></h2>
+
+<%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+  <%= render "share/errors", model: resource %>
+
+  <div class="field">
+    <%= f.label :name %><br />
+    <%= f.text_field :name, autofocus: true, autocomplete: "name" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :image %><br />
+    <%= f.file_field :image %><br />
+    <% if resource.image? %>
+      <%= image_tag resource.image.thumb.url, id: 'image_present', class: 'avator' %>
+    <% else %>
+      <%= image_pack_tag 'no_avatar.jpg', id: 'image_present', class: 'avator' %>
+      <%= f.hidden_field :image_cache %>
+    <% end %>
+    <img class="d-none avator" id="image_prev" src="#">
+  </div>
+
+  <div class="field">
+    <%= f.label :email %><br />
+    <%= f.email_field :email, autocomplete: "email" %>
+  </div>
+
+  <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+    <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :password %>
+    <% if @minimum_password_length %>
+      <em><%= t("devise.shared.minimum_password_length", count: @minimum_password_length) %></em>
+    <% end %><br />
+    <%= f.password_field :password, autocomplete: "new-password" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :password_confirmation %><br />
+    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :current_password %><br />
+    <%= f.password_field :current_password, autocomplete: t(".current_password") %>
+  </div>
+
+  <div class="actions mt-3">
+    <%= f.submit tl(:submit) %>
+  </div>
+<% end %>
+
+<p><%= button_to t(".cancel"), registration_path(resource_name), data: { confirm: t(".are_you_sure") }, method: :delete %></p>
+
+<%= link_to tl(:back), :back %>

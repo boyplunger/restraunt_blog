@@ -1,0 +1,31 @@
+<h2>
+  <%= @blog.title %>
+</h2>
+
+<h5>
+  <strong>by </strong><%= @blog.user.name %>
+</h5>
+
+<p><%= @blog.created_at.strftime("Created at %Y/%m/%d") %></p>
+
+<div class="my-3">
+  <%= img_tag(@blog) %>
+</div>
+
+<p>
+  <% @blog.tag_list.each do |tag| %>
+    <span class="badge badge-primary mr-1 p-2"><%= tags(tag) %></span>
+  <% end %>
+</p>
+
+<%= @blog.body %>
+
+  <div class="my-2">
+    <% if @blog.user_id == current_user.id %>
+      <%= link_to tl(:edit), edit_blog_path(@blog), class: "btn btn-outline-success btn-sm" %> |
+      <%= link_to tl(:delete), @blog, method: :delete, data: { confirm: t("users.registrations.edit.are_you_sure") }, class: "btn btn-outline-danger btn-sm" %> |
+    <% end %>
+    <%= render partial: 'favorite' %>
+  </div>
+
+<%= render partial: 'comments/new' %>

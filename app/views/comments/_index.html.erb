@@ -1,0 +1,15 @@
+<h4><%= t(".title") %></h4>
+
+<% @blog.comments.each do |comment| %>
+<div>
+  <%= avator_tag(comment.user) %>
+
+  <strong><%= comment.user.name %></strong>
+  <small><%= comment.created_at.strftime("%Y/%m/%d") %></small>
+  <% if comment.user == current_user %>
+    <%= link_to tl(:delete), blog_comment_path(@blog, comment), method: :delete, remote: true %>
+  <% end %>
+
+  <p><%= comment.body %></p>
+</div>
+<% end %>
